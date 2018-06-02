@@ -42,7 +42,9 @@ def almacenarReg(): #almacenar un nuevo registro
 
 def buscarReg(): #Buscar una estrella del registro por su nombre
     entrada=input("¿QUÉ ESTRELLA QUIERE CONSULTAR?: ")
-    archivo = open ("registros.txt", "a+")#leer y/o crear archivo
+    archivo=open("registros.txt", "a+")
+    archivo.close()
+    archivo = open ("registros.txt", "r+")#leer y/o crear archivo
     encontrado=False
     for linea in archivo:
         newL=linea.split(":")
@@ -55,12 +57,14 @@ def buscarReg(): #Buscar una estrella del registro por su nombre
 
     
 def mostrarReg():#imprimir todo el registro
-    archivo = open ("registros.txt", "a+") #crear y/o leer archivo
+    archivo=open("registros.txt", "a+")
+    archivo.close()
+    archivo = open ("registros.txt", "r+") #crear y/o leer archivo
     if os.stat("registros.txt").st_size == 0:
         print(">>>> NO hay registros\n") #si está vacío decir q no hay registros
     else:
         print("nombre, tamaño, masa, distancia, constelacion, temperatura\n")
-        for linea in archivo: 
+        for linea in archivo:
             print(linea)
     archivo.close()
 
@@ -95,7 +99,9 @@ def borrarDB():
 
 
 def ordenarReg():
-    archivo = open ("registros.txt", "a+")
+    archivo=open("registros.txt", "a+")
+    archivo.close()
+    archivo = open ("registros.txt", "r+")
     data = []
 
     print("Tipo de Orden:  1 Nombre   4 Distancia")
